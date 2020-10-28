@@ -1,0 +1,3 @@
+[submodule "submodules/HellEngine"]
+	path = submodules/HellEngine
+	url = https://github.com/illia-okonskyi/HellEngine.git
