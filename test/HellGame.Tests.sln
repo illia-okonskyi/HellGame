@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HellGame.Api", "..\src\Hell
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A2143BE8-805F-4047-BA41-0BBAFE0E4FBF}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HellEngine.Utils", "..\submodules\HellEngine\src\HellEngine.Utils\HellEngine.Utils.csproj", "{BD9A95DD-64DA-4B27-BF60-A8B4279F03F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{34B6BF7A-9812-492E-A8D4-C62EFEB8E60C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34B6BF7A-9812-492E-A8D4-C62EFEB8E60C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34B6BF7A-9812-492E-A8D4-C62EFEB8E60C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD9A95DD-64DA-4B27-BF60-A8B4279F03F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD9A95DD-64DA-4B27-BF60-A8B4279F03F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD9A95DD-64DA-4B27-BF60-A8B4279F03F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD9A95DD-64DA-4B27-BF60-A8B4279F03F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +47,7 @@ Global
 		{143108C3-F8BD-42D1-BA5E-D79DCB950A99} = {A2143BE8-805F-4047-BA41-0BBAFE0E4FBF}
 		{501E7D39-9C67-485C-898C-BB419471DFF9} = {96982BDA-1F1F-4CC2-A2A3-F6056B9B9148}
 		{34B6BF7A-9812-492E-A8D4-C62EFEB8E60C} = {DC0753BF-6B93-4C0F-BE42-6789DFC04A8B}
+		{BD9A95DD-64DA-4B27-BF60-A8B4279F03F9} = {96982BDA-1F1F-4CC2-A2A3-F6056B9B9148}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CFAA95AC-4A98-4D1A-A8F7-4CF6084EDFE9}

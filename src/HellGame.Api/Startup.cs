@@ -1,4 +1,5 @@
 using HellEngine.Core.Services;
+using HellEngine.Utils.Configuration.ServiceRegistrator;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -18,7 +19,16 @@ namespace HellGame.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IHelloWorlder, HelloWorlder>();
+            var configPathBuilderFactory =
+                HellEngine.Core.AssemblyEntryPoint.ConfigPathBuilderFactoryMethod();
+            services.AddOptions<HelloWorlderOptions>()
+                .Bind(Configuration.GetSection(
+                    configPathBuilderFactory().Add(HelloWorlderOptions.Path).Build()));
+
+            var appServicesRegistrator = new ApplicationServicesRegistrator();
+            appServicesRegistrator.RegisterApplicationServices(
+                services,
+                typeof(HellEngine.Core.AssemblyEntryPoint).Assembly);
 
             services.AddControllers();
         }
