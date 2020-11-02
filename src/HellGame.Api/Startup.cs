@@ -1,4 +1,5 @@
 using HellEngine.Core.Services;
+using HellEngine.Core.Services.Scripting;
 using HellEngine.Utils.Configuration.ServiceRegistrator;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -24,6 +25,9 @@ namespace HellGame.Api
             services.AddOptions<HelloWorlderOptions>()
                 .Bind(Configuration.GetSection(
                     configPathBuilderFactory().Add(HelloWorlderOptions.Path).Build()));
+            services.AddOptions<ScriptHostOptions>()
+                .Bind(Configuration.GetSection(
+                    configPathBuilderFactory().Add(ScriptHostOptions.Path).Build()));
 
             var appServicesRegistrator = new ApplicationServicesRegistrator();
             appServicesRegistrator.RegisterApplicationServices(
@@ -47,6 +51,8 @@ namespace HellGame.Api
             {
                 endpoints.MapControllers();
             });
+
+            HellEngine.Core.AssemblyEntryPoint.InitSdk(app.ApplicationServices);
         }
     }
 }

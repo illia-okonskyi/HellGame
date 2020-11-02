@@ -1,7 +1,9 @@
 ﻿using HellEngine.Core.Services;
+using HellEngine.Core.Services.Scripting;
 using HellGame.Api.Controllers;
 using Microsoft.Extensions.Logging;
 using Moq;
+using System.Threading;
 using Xunit;
 
 namespace HellGame.Api.Tests.Controllers
@@ -17,6 +19,7 @@ namespace HellGame.Api.Tests.Controllers
             #region Services
             public ILogger<HelloWorldController> Logger { get; }
             public IHelloWorlder HelloWorlder { get; }
+            public IScriptHost ScriptHost { get; }
             #endregion
 
             #region Utils
@@ -26,6 +29,7 @@ namespace HellGame.Api.Tests.Controllers
             {
                 Logger = Mock.Of<ILogger<HelloWorldController>>();
                 HelloWorlder = Mock.Of<IHelloWorlder>();
+                ScriptHost = Mock.Of<IScriptHost>();
             }
         }
         #endregion
@@ -35,10 +39,13 @@ namespace HellGame.Api.Tests.Controllers
         {
             // Arrange
             var context = new TestCaseContext();
-            var sut = new HelloWorldController(context.Logger, context.HelloWorlder);
+            var sut = new HelloWorldController(
+                context.Logger,
+                context.HelloWorlder,
+                context.ScriptHost);
 
             // Act
-            var result = sut.Get();
+            var result = sut.Get(CancellationToken.None);
 
             // Assert
             Mock.Get(context.HelloWorlder).Verify(

@@ -1,0 +1,10 @@
+﻿using HellEngine.Core.Sdk.Models;
+using HellEngine.Core.Sdk.StaticServices;
+using Microsoft.Extensions.Logging;
+
+Logger.LogDebug($"Running script {ScriptName}. ThreadID = {ManagedThreadId}");
+
+var i = DummyService.Sum(Input.IntVal1, Input.IntVal2);
+var helloWorld = DummyService.GetHelloString();
+
+Logger.LogDebug($"Script {ScriptName} data ready i = {i}; helloWorld = {helloWorld}");

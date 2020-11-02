@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HellEngine.Core", "..\submo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HellGame", "HellGame", "{085E7158-1672-451E-B0DA-C958F8EF0066}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HellEngine.Utils", "..\submodules\HellEngine\src\HellEngine.Utils\HellEngine.Utils.csproj", "{6EAF5AC1-1323-42CB-883E-62701C1F2AC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HellEngine.Utils", "..\submodules\HellEngine\src\HellEngine.Utils\HellEngine.Utils.csproj", "{6EAF5AC1-1323-42CB-883E-62701C1F2AC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
