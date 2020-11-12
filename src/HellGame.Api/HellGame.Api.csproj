@@ -5,19 +5,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="assets\data\default\_test\_test.image.png" />
+    <None Remove="assets\data\default\_test\_test.script.txt" />
+    <None Remove="assets\data\default\_test\_test.text.html" />
     <None Remove="assets\TestScript1.txt" />
     <None Remove="assets\TestScript2.txt" />
     <None Remove="assets\TestScript3.txt" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="assets\TestScript2.txt">
+    <Content Include="assets\data\default\_test\_test.image.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="assets\TestScript3.txt">
+    <Content Include="assets\data\default\_test\_test.script.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="assets\TestScript1.txt">
+    <Content Include="assets\data\default\_test\_test.text.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
