@@ -1,0 +1,20 @@
+{
+  "version": "1.0",
+  "defaultProvider": "jsdelivr",
+  "libraries": [
+    {
+      "library": "base64-js@1.5.1",
+      "destination": "wwwroot/lib/base64-js/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "twitter-bootstrap@4.5.3",
+      "destination": "wwwroot/lib/twitter-bootstrap/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "jquery@3.5.1",
+      "destination": "wwwroot/lib/jquery/"
+    }
+  ]
+}
