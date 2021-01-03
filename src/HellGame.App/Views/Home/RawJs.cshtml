@@ -17,59 +17,60 @@
 
 <div class="text-center">
     <div class="container">
-        <div id="divGameControls" class="card m-sm-1">
-            <h5 class="card-header">Controls:</h5>
+        <div id="divGameControls" class="card border-dark m-sm-1 mb-1">
+            <h5 class="card-title">Controls:</h5>
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="form-group">
-                        <button class="btn btn-primary" id="btnRestart">(Re)Start</button>
-                        <button class="btn btn-primary" id="btnSave">Save</button>
-                        <button class="btn btn-primary" id="btnLoad">Load</button>
-                        <button class="btn btn-primary" id="btnExit">Exit</button>
+                        <button class="btn btn-primary m-1" id="btnRestart">(Re)Start</button>
+                        <button class="btn btn-primary m-1" id="btnSave">Save</button>
+                        <button class="btn btn-primary m-1" id="btnLoad">Load</button>
+                        <button class="btn btn-primary m-1" id="btnExit">Exit</button>
                     </div>
-                    <div>
-                        <label id="lblStatus">OK</label>
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-primary" id="btnLocaleRu">Ru</button>
-                        <button class="btn btn-primary" id="btnLocaleEn">En</button>
+                    <div class="form-group" id="btnGroupLocales">
+                        <button class="btn m-1" data-locale="ru-ru">Ru</button>
+                        <button class="btn m-1" data-locale="en-us">En</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="divGameText" class="card m-sm-1">
-            <h5 class="card-header">Game text:</h5>
+        <div id="divGameText" class="card border-dark m-sm-1 mb-1">
+            <h5 class="card-title">Game text:</h5>
             <div class="card-body text-justify">
             </div>
         </div>
 
-        <div id="divGameImage" class="card m-sm-1">
-            <h5 class="card-header">Game image:</h5>
+        <div id="divGameImage" class="card border-dark m-sm-1 mb-1">
+            <h5 class="card-title">Game image:</h5>
             <div class="card-body">
-                <img id="imgStateImage" />
+                <img class="game-image card-img-bottom" /><br />
+                <a class="card-link" href="#">Source</a>
             </div>
         </div>
 
-        <div id="divGameVars" class="card m-sm-1">
-            <h5 class="card-header">Game vars:</h5>
+        <div id="divGameVars" class="card border-dark m-sm-1 mb-1">
+            <h5 class="card-title">Game vars:</h5>
             <div class="card-body">
-                <table class="table table-sm table-striped">
+                <table class="table table-sm table-striped text-left">
                     <tbody>
                     </tbody>
                 </table>
             </div>
         </div>
 
-
-        <div id="divGameTransitions" class="card m-sm-1">
-            <h5 class="card-header">State transitions:</h5>
+        <div id="divGameTransitions" class="card border-dark m-sm-1 mb-1">
+            <h5 class="card-title">Game transitions:</h5>
             <div class="card-body text-justify">
-                <div id="listStateTransitions" class="list-group">
-                    <button class="list-group-item list-group-item-action">transition 1</button>
-                    <button class="list-group-item list-group-item-action">transition 2</button>
-                    <button class="list-group-item list-group-item-action">transition 3</button>
+                <div class="list-group">
                 </div>
+            </div>
+        </div>
+
+        <div id="divStatusBar" class="card border-dark m-sm-1 mb-1">
+            <h5 class="card-title">Status bar:</h5>
+            <div class="card-body text-justify">
+                <label>OK</label>
             </div>
         </div>
     </div>

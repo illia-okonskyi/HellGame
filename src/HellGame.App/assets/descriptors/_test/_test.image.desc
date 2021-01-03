@@ -1,5 +1,6 @@
 {
   "Key": "_test.image",
   "AssetType": "Image",
-  "AssetPath":  "_test/_test.image.png"
+  "AssetPath":  "_test/_test.image.png",
+  "MediaType": "image/png"
 }

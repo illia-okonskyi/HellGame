@@ -1,5 +1,6 @@
 ﻿using HellEngine.Core.Exceptions;
-using HellEngine.Core.Services.Assets;
+using HellEngine.Core.Services.Sessions;
+using HellGame.App.Constants;
 using HellGame.App.ViewModels.Api;
 using HellGame.App.ViewModels.Api.Payload.Assets;
 using Microsoft.AspNetCore.Mvc;
@@ -15,71 +16,81 @@ namespace HellGame.App.Controllers.Api
     public class AssetsController : ApiControllerBase
     {
         private readonly ILogger<AssetsController> logger;
-        private readonly IAssetsManager assetsManager;
+        private readonly ISessionManager sessionManager;
 
         public AssetsController(
             ILogger<AssetsController> logger,
-            IAssetsManager assetsManager)
+            ISessionManager sessionManager)
         {
             this.logger = logger;
-            this.assetsManager = assetsManager;
+            this.sessionManager = sessionManager;
         }
 
         [HttpGet]
-        public async Task<ActionResult<ApiResponse<GetAsset>>> Text(
-            string key,
+        public async Task<ActionResult<ApiResponse<TextAssetResponse>>> Text(
+            [FromHeader(Name = Defaults.SessionIdHeader)] Guid sessionId,
+            [FromQuery] ApiRequest<GetAssetRequest> request,
             CancellationToken cancellationToken)
         {
             try
             {
-                var asset = await assetsManager.GetTextAsset(
-                    key,
-                    cancellationToken: cancellationToken);
-                var response = ApiResponse<GetAsset>.MakeSuccess(
-                    new GetAsset
-                    {
-                        Key = asset.Descriptor.Key,
-                        Type = asset.Descriptor.AssetType,
-                        Data = asset.Data
-                    });
-                return Ok(response);
+                var session = sessionManager.GetSession(sessionId);
+
+                var locale = session.LocaleManager.GetLocale();
+                var asset = await session.AssetsManager.GetTextAsset(
+                    request.Payload.Key,
+                    locale,
+                    cancellationToken);
+
+                var response = new TextAssetResponse
+                {
+                    Key = asset.Descriptor.Key,
+                    Data = asset.Data
+                };
+                return Ok(ApiResponse<TextAssetResponse>.MakeSuccess(response));
             }
             catch (AssetException ex)
             {
-                return BadRequest(ApiResponse<GetAsset>.MakeError(ex));
+                return BadRequest(ApiResponse<TextAssetResponse>.MakeError(ex));
             }
             catch (Exception ex)
             {
-                return ApiError(ApiResponse<GetAsset>.MakeError(ex));
+                return ApiError(ApiResponse<TextAssetResponse>.MakeError(ex));
             }
         }
 
         [HttpGet]
-        public async Task<ActionResult<ApiResponse<GetAsset>>> Image(
-            string key,
+        public async Task<ActionResult<ApiResponse<ImageAssetResponse>>> Image(
+            [FromHeader(Name = Defaults.SessionIdHeader)] Guid sessionId,
+            [FromQuery] ApiRequest<GetAssetRequest> request,
             CancellationToken cancellationToken)
         {
             try
             {
-                var asset = await assetsManager.GetImageAsset(
-                    key,
-                    cancellationToken: cancellationToken);
-                var response = ApiResponse<GetAsset>.MakeSuccess(
-                    new GetAsset
-                    {
-                        Key = asset.Descriptor.Key,
-                        Type = asset.Descriptor.AssetType,
-                        Data = asset.Data
-                    });
-                return Ok(response);
+                var session = sessionManager.GetSession(sessionId);
+
+                var locale = session.LocaleManager.GetLocale();
+                var asset = await session.AssetsManager.GetImageAsset(
+                    request.Payload.Key,
+                    locale,
+                    cancellationToken);
+
+                var response = new ImageAssetResponse
+                {
+                    Key = asset.Descriptor.Key,
+                    MediaType = asset.Descriptor.MediaType,
+                    SourceUrl = asset.Descriptor.SourceUrl,
+                    Data = asset.Data
+                };
+                return Ok(ApiResponse<ImageAssetResponse>.MakeSuccess(response));
             }
             catch (AssetException ex)
             {
-                return BadRequest(ApiResponse<GetAsset>.MakeError(ex));
+                return BadRequest(ApiResponse<ImageAssetResponse>.MakeError(ex));
             }
             catch (Exception ex)
             {
-                return ApiError(ApiResponse<GetAsset>.MakeError(ex));
+                return ApiError(ApiResponse<ImageAssetResponse>.MakeError(ex));
             }
         }
     }

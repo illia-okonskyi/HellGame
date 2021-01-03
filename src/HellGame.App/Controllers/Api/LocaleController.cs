@@ -1,4 +1,5 @@
-﻿using HellEngine.Core.Services.Assets;
+﻿using HellEngine.Core.Services.Sessions;
+using HellGame.App.Constants;
 using HellGame.App.ViewModels.Api;
 using HellGame.App.ViewModels.Api.Payload.Locale;
 using Microsoft.AspNetCore.Mvc;
@@ -12,25 +13,28 @@ namespace HellGame.App.Controllers.Api
     public class LocaleController : ApiControllerBase
     {
         private readonly ILogger<LocaleController> logger;
-        private readonly IAssetsManager assetsManager;
+        private readonly ISessionManager sessionManager;
 
         public LocaleController(
             ILogger<LocaleController> logger,
-            IAssetsManager assetsManager)
+            ISessionManager sessionManager)
         {
             this.logger = logger;
-            this.assetsManager = assetsManager;
+            this.sessionManager = sessionManager;
         }
 
         [HttpGet]
-        public ActionResult<ApiResponse<GetLocaleResponse>> Get([FromRoute]ApiRequest<GetLocaleRequest> request)
+        public ActionResult<ApiResponse<GetLocaleResponse>> Get(
+            [FromHeader(Name = Defaults.SessionIdHeader)] Guid sessionId)
         {
             try
             {
-                var currentLocale = assetsManager.GetLocale();
-                var response = ApiResponse<GetLocaleResponse>.MakeSuccess(
-                    new GetLocaleResponse { Locale = currentLocale });
-                return Ok(response);
+                var session = sessionManager.GetSession(sessionId);
+
+                var locale = session.LocaleManager.GetLocale();
+
+                var response = new GetLocaleResponse { Locale = locale };
+                return Ok(ApiResponse<GetLocaleResponse>.MakeSuccess(response));
             }
             catch (Exception ex)
             {
@@ -39,15 +43,19 @@ namespace HellGame.App.Controllers.Api
         }
 
         [HttpPost]
-        public ActionResult<ApiResponse<GetLocaleResponse>> Post(ApiRequest<SetLocaleRequest> request)
+        public ActionResult<ApiResponse<GetLocaleResponse>> Post(
+            [FromHeader(Name = Defaults.SessionIdHeader)] Guid sessionId,
+            ApiRequest<SetLocaleRequest> request)
         {
             try
             {
-                assetsManager.SetLocale(request.Payload.Locale);
-                var currentLocale = assetsManager.GetLocale();
-                var response = ApiResponse<GetLocaleResponse>.MakeSuccess(
-                    new GetLocaleResponse { Locale = currentLocale });
-                return Ok(response);
+                var session = sessionManager.GetSession(sessionId);
+
+                session.LocaleManager.SetLocale(request.Payload.Locale);
+                var locale = session.LocaleManager.GetLocale();
+                
+                var response = new GetLocaleResponse { Locale = locale };
+                return Ok(ApiResponse<GetLocaleResponse>.MakeSuccess(response));
             }
             catch (Exception ex)
             {
