@@ -1,10 +1,8 @@
 ﻿using HellEngine.Core.Models;
-using HellEngine.Core.Services.Locale;
 using HellEngine.Core.Services.Sessions;
 using HellGame.App.Controllers.Api;
 using HellGame.App.ViewModels.Api;
 using HellGame.App.ViewModels.Api.Payload;
-using HellGame.App.ViewModels.Api.Payload.Locale;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;

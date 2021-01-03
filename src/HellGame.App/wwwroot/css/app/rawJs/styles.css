@@ -2,3 +2,8 @@
     max-width: 100%;
     max-height: 100%
 }
+
+.var-value {
+    font-weight: bold;
+    color: darkblue
+}

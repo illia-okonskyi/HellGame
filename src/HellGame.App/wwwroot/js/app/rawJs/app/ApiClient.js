@@ -44,6 +44,17 @@ export class ApiClient {
         return await this.apiRequest({ path: "assets/image", payload: { key: key } });
     }
 
+    async getVars() {
+        const response = await this.apiRequest({ path: "vars" });
+
+        return response.vars.map(v => {
+            return {
+                name: Base64Encoder.decode(v.name),
+                value: v.value
+            };
+        });
+    }
+
     async apiRequest({ method = "GET", path = "", payload = null } = {}) {
         let url = new URL(`${this.apiEndpoint}/${path}`);
         let body = null;

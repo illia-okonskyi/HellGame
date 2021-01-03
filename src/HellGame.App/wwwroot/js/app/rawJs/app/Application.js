@@ -73,15 +73,15 @@ export class Application {
     }
 
     async testUi() {
-        this.gameText.setGameText("Game <b>test</b> text");
+        const gameText = (await this.apiClient.getTextAsset("_test.text")).data;
+
+        this.gameText.setGameText(gameText);
 
         const imgData = await this.apiClient.getImageAsset("_test.image");
         this.gameImage.setGameImage(imgData.mediaType, imgData.sourceUrl, imgData.data);
-        this.gameVars.setGameVars([
-            { name: "var 1", value: "val1" },
-            { name: "var 2", value: "val2" },
-            { name: "var 3", value: "val3" }
-        ]);
+
+        const vars = await this.apiClient.getVars();
+        this.gameVars.setGameVars(vars);
 
         this.gameTransitions.setTransitions([
             { id: "t0", text: "Transition 0", isEnabled: true, isVisible: true },
