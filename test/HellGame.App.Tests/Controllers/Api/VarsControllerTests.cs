@@ -60,8 +60,8 @@ namespace HellGame.App.Tests.Controllers.Api
                 Var2NameAsset.SetData(AssetDataEncoding.Base64, "222");
                 Vars = new List<IVar>
                 {
-                    new IntVar("var1", Var1Name, 0, 15),
-                    new StringVar("var2", Var2Name, 1, "hello"),
+                    new IntVar("var1", Var1Name, 15),
+                    new StringVar("var2", Var2Name, "hello"),
                 };
 
                 Logger = Mock.Of<ILogger<VarsController>>();
