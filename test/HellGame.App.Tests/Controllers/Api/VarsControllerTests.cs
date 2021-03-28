@@ -84,7 +84,7 @@ namespace HellGame.App.Tests.Controllers.Api
                     .ReturnsAsync(Var2NameAsset);
 
                 Mock.Get(Session.VarsManager).Setup(
-                    m => m.GetAllVars())
+                    m => m.GetAllVars(true))
                     .Returns(Vars);
             }
         }
@@ -135,7 +135,7 @@ namespace HellGame.App.Tests.Controllers.Api
                 context.SessionManager);
 
             Mock.Get(context.Session.VarsManager).Setup(
-                m => m.GetAllVars())
+                m => m.GetAllVars(true))
                 .Throws(new Exception("message"));
 
             // Act

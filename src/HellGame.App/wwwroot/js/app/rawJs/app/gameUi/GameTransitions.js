@@ -26,7 +26,7 @@
 
         let li = document.createElement("button");
         li.classList.add("list-group-item", "list-group-item-action", "list-group-item-info");
-        li.dataset.transitionId = transition.id;
+        li.dataset.transitionKey = transition.key;
         li.innerHTML = transition.text;
         if (!transition.isEnabled) {
             li.disabled = true;
@@ -39,7 +39,7 @@
     }
 
     onLiClicked(event) {
-        const transitionId = event.target.closest("button").dataset.transitionId;
-        this.onTransition(transitionId);
+        const transitionKey = event.target.closest("button").dataset.transitionKey;
+        this.onTransition(transitionKey);
     }
 }

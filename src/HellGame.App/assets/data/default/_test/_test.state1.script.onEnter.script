@@ -1,0 +1,16 @@
+Logger.LogDebug($"Entering state: {Input.State.Key}");
+
+if (!Session.VarsManager.ContainsVar("v1"))
+{
+    Session.VarsManager.AddVar(new IntVar("v1", "_test.vars.var1-name", 44));
+}
+
+if (!Session.VarsManager.ContainsVar("v2"))
+{
+    Session.VarsManager.AddVar(new IntVar("v2", "_test.vars.var2-name", 15, 0, 100));
+}
+
+if (!Session.VarsManager.ContainsVar("v3"))
+{
+    Session.VarsManager.AddVar(new StringVar("v3", "_test.vars.var3-name", "hello"));
+}

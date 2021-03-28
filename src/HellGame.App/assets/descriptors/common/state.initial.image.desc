@@ -1,0 +1,6 @@
+{
+  "Key": "common.state.initial.image",
+  "AssetType": "Image",
+  "AssetPath":  "common/state.initial.image.png",
+  "MediaType": "image/png"
+}

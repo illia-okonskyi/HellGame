@@ -1,0 +1,10 @@
+{
+  "Key": "common.final",
+  "TextAssetKey": "common.state.final.text",
+  "ImageAssetKey": "common.state.final.image",
+  "Transitions": [{
+    "Key": "next",
+    "TextAssetKey": "common.transitions.next",
+    "NextStateKey": "_test.state4"
+  }]
+}

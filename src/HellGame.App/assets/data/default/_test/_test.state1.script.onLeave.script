@@ -1,0 +1,5 @@
+Logger.LogDebug($"Leaving state: {Input.State.Key}");
+
+Session.VarsManager.RemoveVar("v1");
+var v2 = Session.VarsManager.GetVar<IntVar>("v2");
+v2.Value = 999;

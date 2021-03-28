@@ -1,0 +1,20 @@
+var key = Input.Transition.Key;
+Logger.LogDebug($"Transition: {key}");
+
+string nextState = null;
+switch(key)
+{
+    case "t2":
+        nextState = "_test.state2";
+        break;
+    case "t3":
+        nextState = "_test.state3";
+        break;
+    default:
+        throw new NotSupportedException($"Transition {key} not supported");
+}
+
+var v3 = Session.VarsManager.GetVar<StringVar>("v3");
+v3.Value = $"Next state = {nextState}";
+
+Output = new OnTransitionOutput { NextStateKeyOverride = nextState };

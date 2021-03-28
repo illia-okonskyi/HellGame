@@ -6,9 +6,14 @@
 
     setStatus(status) {
         this.lblStatus.textContent = status;
+        this.scrollIntoView();
     }
 
     setLabel(header) {
         this.divStatusBar.querySelector("h5").textContent = header;
+    }
+
+    scrollIntoView() {
+        this.divStatusBar.scrollIntoView();
     }
 }

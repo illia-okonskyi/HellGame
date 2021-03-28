@@ -1,0 +1,16 @@
+{
+  "Key": "_test.state1",
+  "TextAssetKey": "_test.state1.text",
+  "ImageAssetKey": "_test.state1.image",
+  "OnEnterScriptAssetKey": "_test.state1.script.onEnter",
+  "OnLeaveScriptAssetKey": "_test.state1.script.onLeave",
+  "OnTransitionScriptAssetKey": "_test.state1.script.onTransition",
+  "Transitions": [{
+    "Key": "t2",
+    "TextAssetKey": "_test.state1.t2.text"
+  },
+  {
+    "Key": "t3",
+    "TextAssetKey": "_test.state1.t3.text"
+  }]
+}

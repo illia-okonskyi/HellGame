@@ -13,6 +13,50 @@ export class ApiClient {
         await this.apiRequest({ method: "POST", path: "ping" });
     }
 
+    async startGame(userName) {
+        await this.apiRequest({
+            method: "POST",
+            path: "game/startGame",
+            payload: { userName: userName }
+            });
+    }
+
+    async exitGame() {
+        await this.apiRequest({
+            method: "POST",
+            path: "game/exitGame"
+        });
+    }
+
+    async saveGame() {
+        const response = await this.apiRequest({
+            method: "POST",
+            path: "game/saveGame"
+        });
+        return response.fileData;
+    }
+
+    async loadGame(fileData) {
+        await this.apiRequest({
+            method: "POST",
+            path: "game/loadGame",
+            payload: { fileData: fileData }
+        });
+    }
+
+
+    async getGameState() {
+        return await this.apiRequest({ path: "game/gameState" });
+    }
+
+    async transition(key) {
+        await this.apiRequest({
+            method: "POST",
+            path: "game/transition",
+            payload: { key: key }
+        });
+    }
+
     async getLocale() {
         const response = await this.apiRequest({ path: "locale" });
         return response.locale;
